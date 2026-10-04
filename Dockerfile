@@ -1,4 +1,5 @@
 FROM python:3.12-slim
+LABEL org.opencontainers.image.source=https://github.com/BansheedL/ci-lab-temperature
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
