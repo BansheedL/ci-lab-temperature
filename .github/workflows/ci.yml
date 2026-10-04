@@ -7,6 +7,7 @@ permissions:
 on:
   push:
     branches: [ "main" ]
+    tags: [ "v*.*.*" ]
   pull_request:
     branches: [ "main" ]
 
@@ -60,9 +61,15 @@ jobs:
         run: |
           IMAGE=ghcr.io/bansheedl/ci-lab-app
           docker build -t $IMAGE:${{ github.sha }} -t $IMAGE:latest .
+          if [ "${{ github.ref_type }}" = "tag" ]; then
+            docker tag $IMAGE:latest $IMAGE:${{ github.ref_name }}
+          fi
 
       - name: Завантажити образ у реєстр
         run: |
           IMAGE=ghcr.io/bansheedl/ci-lab-app
           docker push $IMAGE:${{ github.sha }}
           docker push $IMAGE:latest
+          if [ "${{ github.ref_type }}" = "tag" ]; then
+            docker push $IMAGE:${{ github.ref_name }}
+          fi

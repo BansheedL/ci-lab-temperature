@@ -51,3 +51,17 @@ Workflow `.github/workflows/ci.yml` запускається автоматич�
 docker pull ghcr.io/bansheedl/ci-lab-app:latest
 docker run --rm ghcr.io/bansheedl/ci-lab-app:latest
 ```
+
+Конкретна версія образу (семантичне версіонування):
+
+```bash
+docker pull ghcr.io/bansheedl/ci-lab-app:v1.0.0
+docker run --rm ghcr.io/bansheedl/ci-lab-app:v1.0.0
+```
+
+Новий тег версії публікується автоматично після push git-тегу:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
