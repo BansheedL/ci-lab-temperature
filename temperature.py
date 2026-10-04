@@ -2,7 +2,7 @@ ABSOLUTE_ZERO_C = -273.15
 
 
 def celsius_to_fahrenheit(c):
-    return c * 9 / 5 + 32
+    return c * 9 / 5 - 32
 
 
 def fahrenheit_to_celsius(f):
