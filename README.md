@@ -41,3 +41,13 @@ Workflow `.github/workflows/ci.yml` запускається автоматич�
 - перевірка стилю коду за допомогою **flake8**;
 - **матриця версій** Python (3.10, 3.11, 3.12) — тести запускаються
   паралельно на кожній версії.
+
+Після успішних тестів job `build-and-push-image` збирає Docker-образ
+і публікує його в GitHub Container Registry.
+
+## Запуск через Docker
+
+```bash
+docker pull ghcr.io/bansheedl/ci-lab-app:latest
+docker run --rm ghcr.io/bansheedl/ci-lab-app:latest
+```
